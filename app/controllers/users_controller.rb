@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
 
   def show
+    @movies = @user.movies
+    @liked_movies = User.first.votes.collect(&:voteable)
   end
 
   private

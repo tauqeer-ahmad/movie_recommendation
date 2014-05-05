@@ -9,13 +9,7 @@
       <%= link_to "Movie Mania", root_path, :class=> 'brand' %>
       <div class="nav-collapse in collapse">
         <ul class="nav">
-          <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Help <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><%= link_to 'Users', "#" %></li>
-              <li><%= link_to 'Movies', "#" %></li>
-            </ul>
-          </li>
+          <li><%= link_to 'Movies', root_path %></li>
         </ul>
 
         <div class="nav pull-right">
@@ -31,6 +25,9 @@
             <li class="dropdown">
               <a data-toggle="dropdown" class="dropdown-toggle" href="#"><%= current_user.display_name %><b class="caret"></b></a>
               <ul class="dropdown-menu">
+                <li>
+                  <%= link_to "Account", current_user %>
+                </li>
                 <li>
                   <%= link_to "Edit Profile", edit_user_registration_path(current_user) %>
                 </li>

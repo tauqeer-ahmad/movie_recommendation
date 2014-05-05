@@ -1,1 +1,17 @@
 <h1><%= @user.display_name %></h1>
+
+<div class="row-fluid">
+  <ul class="nav nav-tabs">
+    <li><a href="#added" data-toggle="tab">Added Movies</a></li>
+    <li><a href="#liked" data-toggle="tab">Liked Movies</a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="added" class="tab-pane active">
+      <%= render "movies/movies", :movies => @movies %>
+    </div>
+    <div id="liked" class="tab-pane">
+      qwqe
+      <%= render "movies/movies", :movies => @liked_movies %>
+    </div>
+  </div>
+</div>
