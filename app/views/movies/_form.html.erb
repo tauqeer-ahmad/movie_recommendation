@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :year %><br />
-    <%= f.date_select :year %>
+    <%= f.date_select :year, {:start_year => Time.now.year, :end_year => Time.now.year - 95, :discard_day => true, :discard_month => true}, :selected => @movie.year %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -1,6 +1,5 @@
 class MoviesController < ApplicationController
-  before_filter :get_user, :except => [:show]
-
+  before_filter :get_user
   def index
     @movies = @user.movies.all
 
