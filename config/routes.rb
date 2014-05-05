@@ -1,5 +1,8 @@
 MovieRecommendation::Application.routes.draw do
 
+  resources :movies
+
+
   devise_for :users
   resources :users, :only => [:show]
 
