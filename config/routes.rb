@@ -1,10 +1,12 @@
 MovieRecommendation::Application.routes.draw do
 
-  resources :movies
+
 
 
   devise_for :users
-  resources :users, :only => [:show]
+  resources :users, :only => [:show] do
+    resources :movies
+  end
 
   get "home/index"
 

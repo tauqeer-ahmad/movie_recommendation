@@ -25,6 +25,9 @@
               <%= link_to "Register", new_user_registration_path, :class => 'btn btn-info'%>
             </div>
           <% else %>
+            <li>
+              <%= link_to "Add Movie", new_user_movie_path(current_user) %>
+            </li>
             <li class="dropdown">
               <a data-toggle="dropdown" class="dropdown-toggle" href="#"><%= current_user.display_name %><b class="caret"></b></a>
               <ul class="dropdown-menu">
