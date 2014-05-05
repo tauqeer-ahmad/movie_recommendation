@@ -1,0 +1,27 @@
+<div id="messages" class="">
+  <div class="container">
+    <% flash.each_with_index do |(k,v),i| %>
+      <div id="message-<%= i %>" class="actual-message">
+        <div class="alert alert-<%= k.to_s.sub('_stay', '') %>">
+          <a data-dismiss="alert" class="close btn btn btn-danger"><i class="icon-remove"></i></a>
+          <h4 class="alert-heading"><%= k.to_s.sub('_stay', '').titleize %>!</h4>
+          <% if v.is_a?(Array) %>
+            <ul>
+              <% v.each do |vv| %>
+                <li><%= vv %></li>
+              <% end %>
+            </ul>
+          <% else %>
+            <%= raw v %>
+          <% end %>
+        </div>
+      </div>
+
+      <% unless k.to_s.index('_stay') %>
+        <script>
+            setTimeout("$('#message-<%= i %>').fadeOut('slow');", 5000);
+        </script>
+      <% end %>
+    <% end %>
+  </div>
+</div>
