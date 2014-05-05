@@ -1,27 +1,2 @@
 <h1>Movies</h1>
-<ul class="thumbnails">
-  <% @movies.each do |movie| %>
-    <li>
-      <div class="thumbnail">
-        <h3><%= movie.display_title %></h3>
-        <div class="row-fluid">
-          <div class="span2">
-            Year: <%= movie.display_year %>
-          </div>
-          <div class="span10">
-            Genres: <%= movie.display_genres %>
-          </div>
-        </div>
-
-        <div class="row-fluid like-<%= movie.id %>">
-          <div class="span3">
-            <%= link_to vote_up_user_movie_path(current_user, movie), :remote => true, :method => :post do %>
-              <%= is_voted_for?(movie) %> <%= movie.votes_for %>
-            <% end %>
-          </div>
-        </div>
-
-      </div>
-    </li>
-  <% end %>
-</ul>
+<%= render :partial => "movies" %>

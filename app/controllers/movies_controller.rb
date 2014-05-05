@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   before_filter :get_user
-   before_filter :get_movie, :only => [:show, :update, :edit, :destroy, :vote_up]
+  before_filter :get_movie, :only => [:show, :update, :edit, :destroy, :vote_up]
+  before_filter :authenticate_user!
   def index
     @movies = @user.movies.all
 
