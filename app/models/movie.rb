@@ -17,6 +17,10 @@ class Movie < ActiveRecord::Base
     genres.collect(&:name).to_a.join(', ')
   end
 
+  def display_title
+    title.to_s.titleize
+  end
+
   def add_genres(genre_ids)
     return if genre_ids.blank?
     self.genres.delete_all
