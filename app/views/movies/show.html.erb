@@ -10,6 +10,10 @@
   <%= @movie.display_year %>
 </p>
 
+<p>
+  <b>Genres:</b>
+  <%= @movie.display_genres %>
+</p>
 
 <%= link_to 'Edit', edit_user_movie_path(@user, @movie) %> |
 <%= link_to 'Back', user_movies_path(@user) %>

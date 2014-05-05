@@ -36,6 +36,7 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       if @movie.save
+        @movie.add_genres(params[:movie][:genre_ids])
         format.html { redirect_to [@user, @movie], notice: 'Movie was successfully created.' }
         format.json { render json: @movie, status: :created, location: @movie }
       else
@@ -50,6 +51,7 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       if @movie.update_attributes(params[:movie])
+        @movie.add_genres(params[:movie][:genre_ids])
         format.html { redirect_to [@user, @movie], notice: 'Movie was successfully updated.' }
         format.json { head :no_content }
       else
