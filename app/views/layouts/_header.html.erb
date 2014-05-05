@@ -26,6 +26,7 @@
             </div>
           <% else %>
             <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#"><%= current_user.display_name %><b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li>
                   <%= link_to "Account", "#" %>
