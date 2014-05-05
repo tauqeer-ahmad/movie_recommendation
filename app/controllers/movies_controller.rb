@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
   before_filter :get_user
+   before_filter :get_movie, :only => [:show, :update, :edit, :destroy, :vote_up]
   def index
     @movies = @user.movies.all
 
@@ -10,8 +11,6 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @movie }
@@ -47,8 +46,6 @@ class MoviesController < ApplicationController
   end
 
   def update
-    @movie = @user.movies.find(params[:id])
-
     respond_to do |format|
       if @movie.update_attributes(params[:movie])
         @movie.add_genres(params[:movie][:genre_ids])
@@ -62,7 +59,6 @@ class MoviesController < ApplicationController
   end
 
   def destroy
-    @movie = @user.movies.find(params[:id])
     @movie.destroy
 
     respond_to do |format|
@@ -71,9 +67,27 @@ class MoviesController < ApplicationController
     end
   end
 
+  def vote_up
+    if current_user.present?
+       if current_user.voted_for?(@movie)
+        current_user.unvote_for(@movie)
+      else
+        current_user.vote_exclusively_for(@movie)
+      end
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def get_user
     @user = User.find params[:user_id]
+  end
+
+  def get_movie
+    @movie = Movie.find params[:id]
   end
 end

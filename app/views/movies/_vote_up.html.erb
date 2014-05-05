@@ -1,0 +1,7 @@
+<div class="row-fluid like-<%= @movie.id %>">
+  <div class="span3">
+    <%= link_to vote_up_user_movie_path(current_user, @movie), :remote => true, :method => :post do %>
+      <%= is_voted_for?(@movie) %> <%= @movie.votes_for %>
+    <% end %>
+  </div>
+</div>

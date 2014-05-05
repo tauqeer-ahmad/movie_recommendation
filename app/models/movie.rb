@@ -2,6 +2,8 @@ class Movie < ActiveRecord::Base
   attr_accessible :title, :year, :genre_ids
   attr_accessor :genre_ids
 
+  acts_as_voteable
+
   has_many :movie_genres, dependent: :destroy
   has_many :genres, through: :movie_genres
 

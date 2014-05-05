@@ -5,7 +5,11 @@ MovieRecommendation::Application.routes.draw do
 
   devise_for :users
   resources :users, :only => [:show] do
-    resources :movies
+    resources :movies do
+      member do
+        post :vote_up
+      end
+    end
   end
 
   get "home/index"
