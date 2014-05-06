@@ -1,0 +1,9 @@
+<div class="row-fluid">
+  <% if can? :update, movie %>
+    <%= link_to "Edit", edit_user_movie_path(current_user, movie) %>
+  <% end %>
+  |
+  <% if can? :destroy, movie %>
+    <%= link_to "Destroy", user_movie_path(current_user, movie), :method => :delete %>
+  <% end %>
+</div>
